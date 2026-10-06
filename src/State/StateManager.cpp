@@ -15,9 +15,14 @@ void StateManager::add(StateId id, std::unique_ptr<State> state)
 
 void StateManager::setCurrent(StateId id)
 {
+    if (m_states.contains(m_currentId))
+        m_states[m_currentId]->onUnsetCurrent();
+
     assert(m_states.contains(id));
 
     m_currentId = id;
+
+    m_states[m_currentId]->onSetCurrent();
 }
 
 void StateManager::update()

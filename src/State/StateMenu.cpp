@@ -4,7 +4,7 @@
 StateMenu::StateMenu(Game& game):
     State(game)
 {
-
+    m_music = LoadMusicStream(TextFormat("%s/music/menu2.wav", GetApplicationDirectory()));
 }
 
 StateMenu::~StateMenu()
@@ -12,9 +12,19 @@ StateMenu::~StateMenu()
     
 }
 
+void StateMenu::onSetCurrent()
+{
+    PlayMusicStream(m_music);
+}
+
+void StateMenu::onUnsetCurrent()
+{
+    StopMusicStream(m_music);
+}
+
 void StateMenu::update()
 {
-    
+    UpdateMusicStream(m_music);
 }
 
 void StateMenu::draw()

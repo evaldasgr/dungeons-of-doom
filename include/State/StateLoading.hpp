@@ -10,6 +10,9 @@ public:
     StateLoading(Game& game);
     virtual ~StateLoading();
 
+    virtual void onSetCurrent();
+    virtual void onUnsetCurrent();
+
     virtual void update();
     virtual void draw();
 

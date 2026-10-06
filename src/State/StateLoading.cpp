@@ -15,6 +15,16 @@ StateLoading::~StateLoading()
     
 }
 
+void StateLoading::onSetCurrent()
+{
+
+}
+
+void StateLoading::onUnsetCurrent()
+{
+    
+}
+
 void StateLoading::update()
 {
     if (m_loadingState == LoadingState::TextDrawn)

@@ -12,6 +12,16 @@ StateGame::~StateGame()
     
 }
 
+void StateGame::onSetCurrent()
+{
+
+}
+
+void StateGame::onUnsetCurrent()
+{
+    
+}
+
 void StateGame::update()
 {
     
