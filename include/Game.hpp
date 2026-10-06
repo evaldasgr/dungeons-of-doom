@@ -10,6 +10,7 @@ public:
     ~Game();
 
     void run();
+    void stop();
 
     StateManager& getStateManager();
     ResourceManager& getResourceManager();
@@ -20,4 +21,5 @@ private:
 
     StateManager m_stateManager;
     ResourceManager m_resourceManager;
+    bool m_running;
 };

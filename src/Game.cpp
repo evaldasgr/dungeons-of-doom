@@ -4,7 +4,8 @@
 #include <memory>
 #include <raylib.h>
 
-Game::Game()
+Game::Game():
+    m_running(false)
 {
     InitWindow(800, 600, "Dungeons of Doom");
     InitAudioDevice();
@@ -31,15 +32,24 @@ ResourceManager& Game::getResourceManager()
 
 void Game::run()
 {
-    while (!WindowShouldClose())
+    m_running = true;
+    while (m_running)
     {
         update();
         draw();
     }
 }
 
+void Game::stop()
+{
+    m_running = false;
+}
+
 void Game::update()
 {
+    if (WindowShouldClose())
+        m_running = false;
+
     m_stateManager.update();
 }
 
