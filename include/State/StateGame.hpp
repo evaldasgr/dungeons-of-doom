@@ -1,6 +1,7 @@
 #pragma once
 
 #include <State/State.hpp>
+#include <Level.hpp>
 
 class StateGame: public State
 {
@@ -13,4 +14,7 @@ public:
 
     virtual void update();
     virtual void draw();
+
+private:
+    Level m_level;
 };

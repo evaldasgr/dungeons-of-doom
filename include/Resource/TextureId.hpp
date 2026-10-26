@@ -2,5 +2,5 @@
 
 enum class TextureId
 {
-    Menu
+    Menu, Walls, Floors
 };

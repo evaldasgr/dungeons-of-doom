@@ -32,7 +32,7 @@ void StateMenu::update()
         // Play
         if (CheckCollisionPointRec(mousePos, {0, 159, 800, 43}))
         {
-            
+            m_game.getStateManager().setCurrent(StateId::Game);
         }
         // Slot 1
         else if (CheckCollisionPointRec(mousePos, {0, 202, 800, 41}))
