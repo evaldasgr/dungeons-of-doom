@@ -17,4 +17,6 @@ public:
 
 private:
     float m_scroll;
+    bool m_draggingScrollbar;
+    float m_draggingScrollbarFrom;
 };

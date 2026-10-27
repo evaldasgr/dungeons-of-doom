@@ -1,9 +1,11 @@
 #include <State/StateHelp.hpp>
 #include <Game.hpp>
+#include <algorithm>
 
 StateHelp::StateHelp(Game& game):
     State(game),
-    m_scroll(0.f)
+    m_scroll(0.f),
+    m_draggingScrollbar(false)
 {
     
 }
@@ -36,6 +38,27 @@ void StateHelp::update()
         {
             m_scroll = std::min(1.f, m_scroll + 0.1f);
         }
+
+        Rectangle scrollbarRect = {782, 19, 16, 562};
+        if (CheckCollisionPointRec(mousePos, scrollbarRect))
+        {
+            m_draggingScrollbar = true;
+            Rectangle currentScrollbarRect = {782, 19 + m_scroll * 378, 15, 184};
+            if (CheckCollisionPointRec(mousePos, currentScrollbarRect))
+                m_draggingScrollbarFrom = mousePos.y - currentScrollbarRect.y;
+            else
+                m_draggingScrollbarFrom = 92;
+        }
+    }
+    if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
+    {
+        m_draggingScrollbar = false;
+    }
+    
+    if (m_draggingScrollbar)
+    {
+        Vector2 mousePos = GetMousePosition();
+        m_scroll = std::clamp((mousePos.y - (19 + m_draggingScrollbarFrom)) / 378, 0.f, 1.f);
     }
 }
 
