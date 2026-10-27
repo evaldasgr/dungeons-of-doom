@@ -2,5 +2,5 @@
 
 enum class StateId
 {
-    Unset, Loading, Menu, Game
+    Unset, Loading, Menu, Game, Help
 };

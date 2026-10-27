@@ -3,6 +3,7 @@
 #include <raylib.h>
 #include <State/StateMenu.hpp>
 #include <State/StateGame.hpp>
+#include <State/StateHelp.hpp>
 
 StateLoading::StateLoading(Game& game):
     State(game),
@@ -33,11 +34,13 @@ void StateLoading::update()
         loadTexture(TextureId::Menu, "menu.png");
         loadTexture(TextureId::Walls, "walls.png");
         loadTexture(TextureId::Floors, "floors.png");
+        loadTexture(TextureId::Help, "help.png");
 
         if (m_loadingState != LoadingState::Error)
         {
             m_game.getStateManager().add(StateId::Menu, std::make_unique<StateMenu>(m_game));
             m_game.getStateManager().add(StateId::Game, std::make_unique<StateGame>(m_game));
+            m_game.getStateManager().add(StateId::Help, std::make_unique<StateHelp>(m_game));
             m_game.getStateManager().setCurrent(StateId::Menu);
             // Just in case
             m_loadingState = LoadingState::Done;

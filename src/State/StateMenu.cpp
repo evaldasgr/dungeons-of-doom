@@ -57,7 +57,7 @@ void StateMenu::update()
         // Help
         else if (CheckCollisionPointRec(mousePos, {0, 363, 800, 41}))
         {
-            
+            m_game.getStateManager().setCurrent(StateId::Help);
         }
         // Exit
         else if (CheckCollisionPointRec(mousePos, {0, 404, 800, 42}))
